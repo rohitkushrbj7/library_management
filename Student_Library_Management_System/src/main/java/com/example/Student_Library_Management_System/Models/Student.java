@@ -20,6 +20,21 @@ public class Student {
 
     private  String country;
 
+
+    //plain syntax for bidirectional mapping
+
+    //Name of variable of the Parent Entity that you have written in child class foreign key aatr.
+    @OneToOne(mappedBy = "studentVariableName", cascade = CascadeType.ALL)
+    private Card card;
+
+    public Card getCard() {
+        return card;
+    }
+
+    public  void setCard(Card card) {
+        this.card = card;
+    }
+
     public Student() {
     }
 

@@ -10,9 +10,16 @@ import java.util.Date;
 @Entity
 @Table(name="card")
 public class Card {
+
+    // plan is to save card into the DB
+    // Before Saving I have to set Its Attribute : Rule 1
+    // don't forgave Rule : 1 this is a Rule : 2
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id; // its Auto Generated
 
     @CreationTimestamp
     private Date createdOn; // time stamp when entry is created
@@ -23,6 +30,19 @@ public class Card {
     @Enumerated(value =  EnumType.STRING)
     private CardStatus cardStatus;
 
+    @OneToOne
+    @JoinColumn
+    private Student studentVariableName; // this variable used in parent class.
+    //while doing the bidirectional mapping
+
+
+    public Student getStudentVariableName(Student student) {
+        return studentVariableName;
+    }
+
+    public void setStudentVariableName(Student studentVariableName) {
+        this.studentVariableName = studentVariableName;
+    }
 
     public Card() {
     }
@@ -49,5 +69,13 @@ public class Card {
 
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+    public CardStatus getCardStatus(CardStatus activated) {
+        return cardStatus;
+    }
+
+    public void setCardStatus(CardStatus cardStatus) {
+        this.cardStatus = cardStatus;
     }
 }
