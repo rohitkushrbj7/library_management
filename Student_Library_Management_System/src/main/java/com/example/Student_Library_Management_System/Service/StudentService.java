@@ -24,6 +24,7 @@ public class StudentService {
         Card card = new Card();
         card.setCardStatus(CardStatus.ACTIVATED);
         card.setStudentVariableName(student);
+        // to activate the card
 
 
         //Let's go to the student
