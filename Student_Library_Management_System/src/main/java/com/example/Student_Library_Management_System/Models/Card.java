@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="card")
@@ -14,8 +16,6 @@ public class Card {
     // plan is to save card into the DB
     // Before Saving I have to set Its Attribute : Rule 1
     // don't forgave Rule : 1 this is a Rule : 2
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,9 @@ public class Card {
     private Student studentVariableName; // this variable used in parent class.
     //while doing the bidirectional mapping
 
+    //Card is parent wrt to book
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+    List<Book>booksIssued  = new ArrayList<>();
 
     public Student getStudentVariableName(Student student) {
         return studentVariableName;
